@@ -1,12 +1,12 @@
 import { Router } from 'express';
+import express from 'express';
 import bcrypt from 'bcrypt';
 import { pool } from '../db.js';
 
-const router = Router();
+const r = Router();
 
-router.post('/register', async (req,res) => {
-    const email = req.body.email;
-    const pw    = req.body.pw;
+r.post('/register', async (req: express.Request,res: express.Response) => {
+    const { email, pw } = req.body;
     const saltRounds = 10;
 
     if (!email || !pw){
@@ -28,6 +28,11 @@ router.post('/register', async (req,res) => {
             console.error(err);
             res.status(500).json({error: 'error'});
     } 
+
 });
 
-export default router;
+r.post('/register', async (req,res) => {
+
+});
+
+export default r;
