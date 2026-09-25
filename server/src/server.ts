@@ -1,15 +1,17 @@
 import express from 'express';
+import type { Application, Request, Response } from 'express';
 import { parseWithIchiran } from './ichiran.js';
 import { pool } from './db.js';
 import authRoutes from './routes/auth.routes.js';
 
 const PORT = 3000;
-const app = express();
+const app: Application = express();
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/api', authRoutes);
 
-app.post('/api/parse', async (req,res) => {
+app.post('/api/parse', async (req: express.Request, res: express.Response) => {
     const { sentence } = req.body;
 
     if (!sentence || typeof sentence !== 'string') {
@@ -26,7 +28,7 @@ app.post('/api/parse', async (req,res) => {
     }
 })
 
-app.get('/health',async (req, res) => {
+app.get('/health',async (req: express.Request, res: express.Response) => {
     try {
         await pool.query('SELECT 1');
         res.json({ status: 'ok' });

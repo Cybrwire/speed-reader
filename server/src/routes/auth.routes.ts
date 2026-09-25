@@ -31,7 +31,7 @@ r.post('/register', async (req: express.Request,res: express.Response) => {
 
 });
 
-r.post('/register', async (req,res) => {
+r.post('/login', async (req,res) => {
 
 });
 
