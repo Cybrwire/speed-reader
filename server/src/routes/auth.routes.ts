@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import express from 'express';
 
-import { register } from '../controllers/authentication.js'
+import { register,login } from '../controllers/authentication.js'
 
 const r = Router();
 
