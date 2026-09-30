@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { pool } from '../../db/db.js';
 import { deleteUserById, getAllUsers, getUserByEmail,getUserById } from '../../db/users.js';
+import * as dotenv from 'dotenv';
 
 export const test = async (req: express.Request,res: express.Response) => {
     const testUser = await getUserByEmail('skibbidy@dixoncider.com')
@@ -33,13 +34,20 @@ export const register = async (req: express.Request,res: express.Response) => {
 
 export const login = async (req: express.Request,res: express.Response) => {
     const user = await getUserByEmail(req.body.email);
+    const jwt = require('jsonwebtoken'); 
+    const SECRET = process.env.SECRET as string;
 
     if(!user) {
         return res.status(400).json("user doesn't exist");
     }
     try{
         if(await bcrypt.compare(req.body.pw, user.rows[0].pw_hash)){
-            return res.status(200).send('Success. Welcome.');
+            const token = jwt.sign(user,SECRET,{ expiresIn: 120 });
+            return res.cookie('auth_token',token, {
+                httpOnly: true,
+                maxAge: 3600000
+            });
+
         } else {
             return res.status(400).send('Login failed');
         }
@@ -47,7 +55,10 @@ export const login = async (req: express.Request,res: express.Response) => {
         console.log(error);
         return res.status(400).json(error);
     }
-    const jwt = require('jsonwebtoken'); 
+    
+}
+export const authenticateToken = (req: express.Request,res: express.Response, next) => {
+
 }
 
 export const showUsers = async (req: express.Request,res: express.Response) => {
