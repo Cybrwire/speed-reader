@@ -9,6 +9,9 @@ lerna-debug.log*
 # start up commands
 start-dev.sh
 
+# api-test file
+api-test.rest
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 

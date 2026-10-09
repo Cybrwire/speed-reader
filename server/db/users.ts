@@ -1,6 +1,5 @@
 // db/users.ts
 import { pool } from './db.js'; // wherever your Pool instance lives
-import express from 'express';
 
 export const getAllUsers = () => 
     pool.query('SELECT * FROM users');
