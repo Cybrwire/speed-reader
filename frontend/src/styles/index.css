@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+@layer components {
+    nav>ul li {
+        @apply flex p-2 items-center;
+    }
+}

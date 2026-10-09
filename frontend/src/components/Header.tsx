@@ -1,8 +1,13 @@
 export function Header() {
     return (
-        <header>
-            <h1>Speed Reader</h1>
-            
+        <header className="flex justify-center">
+            <nav className="border-2">
+                <ul className="flex flex-row gap-4">
+                    <li>Speed<br/>Reader</li>
+                    <li>Read</li>
+                    <li>Profile</li>
+                </ul>
+            </nav>
         </header>
     )
 }
