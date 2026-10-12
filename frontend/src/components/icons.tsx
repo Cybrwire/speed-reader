@@ -13,18 +13,18 @@ export const ClosedEye: React.FC<IconProps> = ({ size = 24, ...props }) => (
 );
 
 export const OpenEye: React.FC<IconProps> = ({ size = 24, ...props }) => (
-    <svg width={size} height={size} viewBox="0 0 81 90" fill="none" {...props}>
+    <svg width={size+3} height={size+3} viewBox="3 -7 81 90" fill="none" {...props}>
     
-      <path d="M42.9551 13.375V2M12.9213 26.375L2 16.625M72.9888 26.375L83 16.625M2.91011 41C2.91011 41 17.4719 15 42.9551 15C68.4382 15 83 41 83 41C83 41 68.4382 67 42.9551 67C17.4719 67 2.91011 41 2.91011 41ZM53.8764 41C53.8764 46.3848 48.9868 50.75 42.9551 50.75C36.9234 50.75 32.0337 46.3848 32.0337 41C32.0337 35.6152 36.9234 31.25 42.9551 31.25C48.9868 31.25 53.8764 35.6152 53.8764 41Z" stroke="black" stroke-width="8" stroke-linecap="round"/>
+      <path d="M42.9551 13.375V2M12.9213 26.375L2 16.625M72.9888 26.375L83 16.625M2.91011 41C2.91011 41 17.4719 15 42.9551 15C68.4382 15 83 41 83 41C83 41 68.4382 67 42.9551 67C17.4719 67 2.91011 41 2.91011 41ZM53.8764 41C53.8764 46.3848 48.9868 50.75 42.9551 50.75C36.9234 50.75 32.0337 46.3848 32.0337 41C32.0337 35.6152 36.9234 31.25 42.9551 31.25C48.9868 31.25 53.8764 35.6152 53.8764 41Z" stroke="black" stroke-width="6" stroke-linecap="round"/>
 
     </svg>
 );
 
 export const PlayIcon: React.FC<IconProps> = ({ size = 24, ...props }) => (
-    <svg width={size} height={size} viewBox="0 0 55 24" fill="none" {...props}>
+    <svg width={size} height={size+3} viewBox="-5 15 65 30" fill="none" {...props}>
     
+      <path d="M4 4L52 33L4 62V4Z" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
 
-      <path d="M2 2L30 20L2 38V2Z" stroke="currentColor" stroke-width="4" strokeLinecap="round" strokeLinejoin="round"/>
 
 
     </svg>
