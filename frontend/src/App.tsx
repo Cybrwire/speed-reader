@@ -5,8 +5,8 @@ export default function App() {
   return (
     <div>
       <Header/>
-      <div className="grid grid-cols-[1fr_minmax(0,720px)_1fr]">
-        <Button variant="new-text">New <br/>Text</Button>
+      <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
+        <Button variant="new-text" >New <br/>Text</Button>
         <ReadingArea></ReadingArea>
       </div>
     </div>

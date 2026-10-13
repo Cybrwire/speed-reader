@@ -11,7 +11,7 @@ export function ReadingArea() {
                         <Button variant='show-hide' ><PlayIcon/></Button>
                     </div>
                 </div>
-                <div>
+                <div className="border">
                     parsed text goes here
                 </div>
             </section>
