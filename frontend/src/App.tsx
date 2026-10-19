@@ -1,11 +1,13 @@
 import { Button } from "./components/Button"
 import { ReadingArea } from "./components/ReadingArea"
 import { ControlPanel } from "./components/ControlPanel"
+import { SourceInput } from "./components/SourceInput"
 
 export default function App() {
   return (
     <div>
       <Header/>
+      <SourceInput/>
       <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
         <Button variant="new-text" >New <br/>Text</Button>
         <ReadingArea></ReadingArea>
