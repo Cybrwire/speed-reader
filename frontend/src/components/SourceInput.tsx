@@ -15,7 +15,7 @@ export function SourceInput() {
             const res = await fetch("http://localhost:3000/api/parse", {
                 method: "POST",
                 headers: { "Content Type": "application/json" },
-                body: JSON.stringify({ sentence: text }),
+                body: JSON.stringify({ tokens: text }),
             });
             const data = await res.json();
             setResult(data);
