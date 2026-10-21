@@ -1,11 +1,41 @@
+import {useState} from "react";
+
 export function SourceInput() {
+    const [text,setText] = useState<string>('');
+    const [err,setError] = useState<string | null>('');
+    const [result,setResult] = useState<unknown>(null);
+    const [loading,setLoading] = useState(false);
+    
+    async function handleSubmit(e:SubmitEvent) {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        try{
+            const res = await fetch("http://localhost:3000/api/parse", {
+                method: "POST",
+                headers: { "Content Type": "application/json" },
+                body: JSON.stringify({ sentence: text }),
+            });
+            const data = await res.json();
+            setResult(data);
+            console.log(res);
+        }catch(err){
+            setError(err instanceof Error ? err.message : "Unknown error");
+        }finally{
+            setLoading(false);
+        }   
+
+    }
+
     return (
         <div className="m-2">
-            <form className='flex flex-col items-center'action="/post">
+            <form className='flex flex-col items-center' onSubmit={handleSubmit}>
                 <label htmlFor="textInput">Sentence to speed read:</label>
                 <input type="text" name="textInput" id="textInput" placeholder="Enter your text here..."
-                className="w-fit p-2 field-sizing-content" />
-                <button type="submit">Submit</button>
+                value={text} onChange={e => setText(e.target.value)}
+                className="w-fit p-2 m-2 border-2 field-sizing-content" />
+                <button type="submit" className="border-2 p-2 rounded-lg cursor-pointer" disabled={text.trim()===''}>Submit</button>
             </form>
         </div>
     )

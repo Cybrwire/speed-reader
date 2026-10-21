@@ -22,7 +22,6 @@ function getVariantStyles(variant: Variant) {
             return "bg-blue px-2 py-2"
         case "new-text":
             return "bg-green px-4 py-2 size-fit justify-self-end"
-        
         default: 
             throw new Error(`Invalid variant: ${variant satisfies never}"`)
     }
