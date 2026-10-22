@@ -3,12 +3,16 @@
 GET http://localhost:3000/health
 
 ###
+
+POST http://localhost:3000/api/
+
+###
 POST http://localhost:3000/api/register
 Content-Type: application/json
 
 {
-    "email": "skibbidy@dixoncider.com",
-    "password": "hotshit420"
+    "email": "skibbidy@mosh.com",
+    "password": "sickpassword"
 }
 
 ###
@@ -23,6 +27,19 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-    "email": "skibbidy@dixoncider.com",
-    "password": "hot420"
+    "email": "skibbidy@mosh.com",
+    "password": "sickpassword!"
+}
+
+###
+
+GET http://localhost:3000/api/users
+
+### 
+
+PUT http://localhost:3000/api/delete
+Content-Type: application/json
+
+{
+    "id": "6ce072f3-d0b1-454d-8ac5-352184a7a16d"
 }

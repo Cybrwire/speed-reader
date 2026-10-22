@@ -1,4 +1,3 @@
-
 import type { ComponentProps } from "react";
 
 type Variant = 'show-hide' | 'play-pause' | 'new-text';
@@ -11,19 +10,18 @@ export function Button({variant, ...props}:ButtonProps) {
     return (
         <button 
             {...props}
-            className={ `${getVariantStyles(variant)} border-2 border-b-mist-600 rounded-2xl` } />
+            className={ `${getVariantStyles(variant)} cursor-pointer border-2 rounded-2xl` } />
     )
 }
 
 function getVariantStyles(variant: Variant) {
     switch(variant){
         case "show-hide":
-            return "bg-purple px-2 py-2 h-4 w-4"
+            return "px-2 py-2 m-2"
         case "play-pause":
-            return "bg-blue"
+            return "bg-blue px-2 py-2"
         case "new-text":
-            return "bg-green px-4 py-2"
-        
+            return "bg-green px-4 py-2 size-fit justify-self-end"
         default: 
             throw new Error(`Invalid variant: ${variant satisfies never}"`)
     }

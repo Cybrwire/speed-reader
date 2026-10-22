@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import express from 'express';
 import { register,login,deleteUser,showUsers,test } from '../controllers/authentication.js'
 
 const r = Router();

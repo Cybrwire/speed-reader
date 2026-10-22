@@ -1,13 +1,17 @@
 import { Button } from "./components/Button"
 import { ReadingArea } from "./components/ReadingArea"
+import { ControlPanel } from "./components/ControlPanel"
+import { SourceInput } from "./components/SourceInput"
 
 export default function App() {
   return (
     <div>
       <Header/>
-      <div className="flex flex-row">
-        <Button variant="new-text">New <br/>Text</Button>
+      <SourceInput/>
+      <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
+        <Button variant="new-text" >New <br/>Text</Button>
         <ReadingArea></ReadingArea>
+        <ControlPanel/>
       </div>
     </div>
     
@@ -17,7 +21,7 @@ export default function App() {
 function Header() {
     return (
         <header className="flex justify-center">
-            <nav className="border-2">
+            <nav className="border-2 border-t-0">
                 <ul className="flex flex-row gap-4">
                     <li>Speed<br/>Reader</li>
                     <li>Read</li>
