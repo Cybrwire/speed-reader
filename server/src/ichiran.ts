@@ -20,9 +20,6 @@ export function parseWithIchiran(sentence:string):Promise<string[]>{
 
 export function getWordInfo(data:IchiranResult):string[]{
     let wordOutput:(string)[] = [];
-
-    //console.log(JSON.stringify(data, null, 2));
-    //console.log(typeof data, Array.isArray(data));
     
     data.forEach(item => { 
         if (typeof item == 'string'){

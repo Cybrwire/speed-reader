@@ -1,7 +1,15 @@
 import { Button } from "./Button"
 import { OpenEye, PlayIcon } from "./icons"
+import { type ParseResponse } from "../../../server/src/ichiran.types.jsx"
 
-export function ReadingArea() {
+type ReadingAreaProps = {
+    result: ParseResponse | null;
+};
+
+export function ReadingArea({ result }:ReadingAreaProps, ) {
+
+    if (!result) return;
+    console.log(result);
     return (
             <section className="flex flex-col border-2 p-2">
                 <div className="flex items-center justify-between"> 
@@ -12,7 +20,9 @@ export function ReadingArea() {
                     </div>
                 </div>
                 <div className="border">
-                    parsed text goes here
+                        {result.tokens.map((token,i) => (
+                            <span key={i}>{token}</span>
+                        ))}
                 </div>
             </section>
     )

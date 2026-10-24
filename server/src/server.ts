@@ -3,10 +3,13 @@ import type { Application, Request, Response } from 'express';
 import authRoutes from './routes/auth.routes.js';
 import parseRoutes from './routes/parse.routes.js';
 import healthRoutes from './routes/health.routes.js';
+import cors from "cors";
 
 const PORT = 3000;
 const app: Application = express();
+
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
 app.use('/api', authRoutes);

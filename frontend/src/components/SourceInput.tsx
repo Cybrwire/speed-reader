@@ -1,12 +1,19 @@
-import {useState} from "react";
+import {useState, type SubmitEvent} from "react";
+import type { ParseResponse } from "../../../server/src/ichiran.types";
 
-export function SourceInput() {
+type SourceInputProps = {
+    onResult: (data: ParseResponse) => void;
+};
+
+export function SourceInput({ onResult }: SourceInputProps) {
     const [text,setText] = useState<string>('');
-    const [err,setError] = useState<string | null>('');
-    const [result,setResult] = useState<unknown>(null);
+    const [err,setError] = useState<string | null>(null);
+
     const [loading,setLoading] = useState(false);
     
-    async function handleSubmit(e:SubmitEvent) {
+
+
+    async function handleSubmit(e:SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -14,12 +21,12 @@ export function SourceInput() {
         try{
             const res = await fetch("http://localhost:3000/api/parse", {
                 method: "POST",
-                headers: { "Content Type": "application/json" },
-                body: JSON.stringify({ tokens: text }),
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ sentence: text }),
             });
             const data = await res.json();
-            setResult(data);
-            console.log(res);
+            onResult(data);
+            
         }catch(err){
             setError(err instanceof Error ? err.message : "Unknown error");
         }finally{

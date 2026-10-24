@@ -1,7 +1,10 @@
+export interface ParseResponse {
+    tokens: string[];
+}
+
 export interface IchiranWordInfo {
     text: string;
     kana: string;
-    
 }
 
 export type IchiranWordSlot = IchiranWordInfo | { alternative: IchiranWordInfo[] };
