@@ -6,7 +6,7 @@ type ReadingAreaProps = {
     result: ParseResponse | null;
 };
 
-export function ReadingArea({ result }:ReadingAreaProps, ) {
+export function ReadingArea({ result }:ReadingAreaProps) {
 
     if (!result) return;
     console.log(result);
@@ -21,7 +21,7 @@ export function ReadingArea({ result }:ReadingAreaProps, ) {
                 </div>
                 <div className="border">
                         {result.tokens.map((token,i) => (
-                            <span key={i}>{token}</span>
+                            <span key={i}>{token.text}</span>
                         ))}
                 </div>
             </section>

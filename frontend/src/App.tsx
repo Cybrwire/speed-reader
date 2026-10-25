@@ -5,19 +5,45 @@ import { ControlPanel } from "./components/ControlPanel"
 import { SourceInput } from "./components/SourceInput"
 import type { ParseResponse } from "../../server/src/ichiran.types"
 
+type View = "input" | "reading" | "loading";
+
 export default function App() {
 
   const [result,setResult] = useState<ParseResponse | null>(null);
+  const [view,setView] = useState<View>("input");
+  const [error,setError] = useState<string | null>(null);
+
+  async function handleSubmit(text: string) {
+    setView("loading");
+    setError(null);
+
+    try {
+      const res = await fetch("http://localhost:3000/api/parse", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sentence: text }),
+      });
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      setResult(await res.json());
+      setView("reading");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error");
+      setView("input");   // go back so user can retry
+    }
+  }
 
   return (
     <div>
       <Header/>
-      <SourceInput onResult={setResult}/>
-      <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
-        <Button variant="new-text" >New <br/>Text</Button>
-        <ReadingArea result={result}></ReadingArea>
-        <ControlPanel/>
-      </div>
+      <>
+        {view === "input" && <SourceInput onSubmit={handleSubmit} error={error}/>}
+        {view === "reading" && <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
+          <Button variant="new-text" onClick={() => setView("input")}>New <br/>Text</Button>
+          <ReadingArea result={result}></ReadingArea>
+          <ControlPanel/>
+        </div>}
+        {view === "loading" && <div className="flex justify-center">LOADING...</div>}
+      </>
     </div>
     
   )

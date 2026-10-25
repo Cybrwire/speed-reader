@@ -1,5 +1,5 @@
 export interface ParseResponse {
-    tokens: string[];
+    tokens: IchiranWordInfo[];
 }
 
 export interface IchiranWordInfo {
