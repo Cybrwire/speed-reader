@@ -1,17 +1,19 @@
 import { Button } from "./Button"
 import { OpenEye, PlayIcon } from "./icons"
 import { type ParsedResponse } from "../../../server/src/ichiran.types.jsx"
+import type { Settings } from "./types.js";
+import Word from "./Word.js";
 
 type ReadingAreaProps = {
     result: ParsedResponse | null;
-    settings: {};
+    settings: Settings;
 };
 
-export function ReadingArea({ result }:ReadingAreaProps) {
+export function ReadingArea({ result, settings }:ReadingAreaProps) {
 
     
     if (!result) return;
-    console.log(result);
+    //console.log(result);
     return (
             <section className="flex flex-col border-2 p-2">
                 <div className="flex items-center justify-between"> 
@@ -21,9 +23,9 @@ export function ReadingArea({ result }:ReadingAreaProps) {
                         <Button variant='show-hide' ><PlayIcon/></Button>
                     </div>
                 </div>
-                <div className="border">
+                <div className="border" style={{ fontSize: `${settings.fontSize}px` }}>
                         {result.tokens.map((token,i) => (
-                            <span key={i}>{token.text}</span>
+                            <Word key={i} word={token} isCurrent={false} showFurigana={false} />
                         ))}
                 </div>
             </section>
