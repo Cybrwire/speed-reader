@@ -1,13 +1,15 @@
 import { Button } from "./Button"
 import { OpenEye, PlayIcon } from "./icons"
-import { type ParseResponse } from "../../../server/src/ichiran.types.jsx"
+import { type ParsedResponse } from "../../../server/src/ichiran.types.jsx"
 
 type ReadingAreaProps = {
-    result: ParseResponse | null;
+    result: ParsedResponse | null;
+    settings: {};
 };
 
 export function ReadingArea({ result }:ReadingAreaProps) {
 
+    
     if (!result) return;
     console.log(result);
     return (

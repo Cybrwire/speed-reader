@@ -3,16 +3,30 @@ import { Button } from "./components/Button"
 import { ReadingArea } from "./components/ReadingArea"
 import { ControlPanel } from "./components/ControlPanel"
 import { SourceInput } from "./components/SourceInput"
-import type { ParseResponse } from "../../server/src/ichiran.types"
+import type { ParsedResponse } from "../../server/src/ichiran.types"
+import type { Settings } from "./components/types"
 
-type View = "input" | "reading" | "loading";
+
+type View = "input" | "reading" | "loading"; //screen states
 
 export default function App() {
 
-  const [result,setResult] = useState<ParseResponse | null>(null);
+  const [result,setResult] = useState<ParsedResponse | null>(null);
   const [view,setView] = useState<View>("input");
   const [error,setError] = useState<string | null>(null);
+    
+  const [settings,setSettings] = useState<Settings>({
+    mode: "paragraph",
+    showFurigana: false,
+    fontSize: 24,
+    tokenChunkSize: 1,
+    speed: 500,
+  })
 
+  function updateSettings(changes:Partial<Settings>) {
+    setSettings({ ...settings, ...changes})
+  }
+  
   async function handleSubmit(text: string) {
     setView("loading");
     setError(null);
@@ -39,8 +53,8 @@ export default function App() {
         {view === "input" && <SourceInput onSubmit={handleSubmit} error={error}/>}
         {view === "reading" && <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
           <Button variant="new-text" onClick={() => setView("input")}>New <br/>Text</Button>
-          <ReadingArea result={result}></ReadingArea>
-          <ControlPanel/>
+          <ReadingArea result={result} settings={settings}></ReadingArea>
+          <ControlPanel settings={settings} onSettingsChange={updateSettings}/>
         </div>}
         {view === "loading" && <div className="flex justify-center">LOADING...</div>}
       </>

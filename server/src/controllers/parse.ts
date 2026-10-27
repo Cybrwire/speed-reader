@@ -1,6 +1,5 @@
 import express from 'express';
 import { parseWithIchiran } from '../ichiran.js';
-import type { IchiranWordInfo } from '../ichiran.types.js';
 
 export const parseJpInput = async (req: express.Request, res: express.Response) => { 
     const { sentence } = req.body; 
