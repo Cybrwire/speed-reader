@@ -5,3 +5,5 @@ export type Settings = {
     fontSize: number;
     tokenChunkSize: number;
 }
+
+export type Mode = Settings["mode"];
