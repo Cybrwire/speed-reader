@@ -14,7 +14,7 @@ export default function App() {
   const [result,setResult] = useState<ParsedResponse | null>(null);
   const [view,setView] = useState<View>("input");
   const [error,setError] = useState<string | null>(null);
-    
+  const [playing,setPlaying] = useState(false);
   const [settings,setSettings] = useState<Settings>({
     mode: "paragraph",
     showFurigana: false,
@@ -26,6 +26,7 @@ export default function App() {
   function updateSettings(changes:Partial<Settings>) {
     setSettings({ ...settings, ...changes})
   }
+  
   
   async function handleSubmit(text: string) {
     setView("loading");
@@ -53,7 +54,7 @@ export default function App() {
         {view === "input" && <SourceInput onSubmit={handleSubmit} error={error}/>}
         {view === "reading" && <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
           <Button variant="new-text" onClick={() => setView("input")}>New <br/>Text</Button>
-          <ReadingArea result={result} settings={settings}></ReadingArea>
+          <ReadingArea playing={playing} setPlaying={setPlaying} result={result} settings={settings}></ReadingArea>
           <ControlPanel settings={settings} onSettingsChange={updateSettings}/>
         </div>}
         {view === "loading" && <div className="flex justify-center">LOADING...</div>}
