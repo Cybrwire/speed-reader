@@ -7,18 +7,22 @@ type WordProps = {
     isCurrent: boolean;
     showFurigana: boolean;
     mode: Mode;
+    showText: boolean;
 }
-
 
 const hiddenStyle: Record<Mode,string> = {
     paragraph: "opacity-0", // invisible, keeps its space
     focused: "hidden",      // removed from layout
 };
 
-export default function Word({ word, isCurrent, showFurigana, mode }:WordProps){
+export default function Word({ word, isCurrent, showText, showFurigana, mode }:WordProps){
     
-
     return(
-        <span className={isCurrent ? "" : hiddenStyle[mode]}>{word.text}</span>
+        <>
+            {!showText && <span className={isCurrent ? "" : hiddenStyle[mode]}>{word.text}</span>}
+            {showText && <span>{word.text}</span>}
+        </>
+
+        
     )
 }

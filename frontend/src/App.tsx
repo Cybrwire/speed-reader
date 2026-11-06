@@ -52,7 +52,7 @@ export default function App() {
       <Header/>
       <>
         {view === "input" && <SourceInput onSubmit={handleSubmit} error={error}/>}
-        {view === "reading" && <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
+        {view === "reading" && result && <div className="mt-10 grid grid-cols-[1fr_minmax(0,720px)_1fr] gap-5">
           <Button variant="new-text" onClick={() => setView("input")}>New <br/>Text</Button>
           <ReadingArea playing={playing} setPlaying={setPlaying} result={result} settings={settings}></ReadingArea>
           <ControlPanel settings={settings} onSettingsChange={updateSettings}/>
