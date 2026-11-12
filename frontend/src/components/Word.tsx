@@ -22,7 +22,5 @@ export default function Word({ word, isCurrent, showText, showFurigana, mode }:W
             {!showText && <span className={isCurrent ? "" : hiddenStyle[mode]}>{word.text}</span>}
             {showText && <span>{word.text}</span>}
         </>
-
-        
     )
 }

@@ -17,7 +17,7 @@ type ReadingAreaProps = {
 
 export function ReadingArea({ playing, setPlaying, result, settings }:ReadingAreaProps) {
     
-    const cWord = useWordFlash(playing, settings.speed,result.tokens.length, setPlaying);
+    const cWord = useWordFlash(playing, settings.speed,result.tokens, setPlaying);
     const containerStyle: Record<Mode, string> = {
         paragraph: "",
         focused: "text-center",

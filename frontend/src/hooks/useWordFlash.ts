@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { getDelay } from "./getDelay.ts";
+import type { IchiranWordInfo } from "../../../server/src/ichiran.types.ts";
 
 export function useWordFlash(
   playing: boolean,
   speed: number,
-  tokenCount: number,
+  tokens: IchiranWordInfo[],
   setPlaying: (playing: boolean) => void
 ) {
   const [flashIndex, setFlashIndex] = useState(0);
@@ -12,20 +14,23 @@ export function useWordFlash(
   useEffect(() => {
     if (!playing) return;
 
-    const id = setInterval(() => {
-      setFlashIndex((prev) => (prev < tokenCount ? prev + 1 : prev));
-    }, speed);
+    const token = tokens[flashIndex];
+    if (token === undefined) return; 
+    console.log("effect run", { flashIndex, token, delay: getDelay(token.text, speed) });
+    const id = setTimeout(() => {
+      setFlashIndex((current) => (current + 1 ));
+    }, getDelay(token.text,speed));
 
-    return () => clearInterval(id);
-  }, [playing, speed, tokenCount]);
+    return () => clearTimeout(id);
+  }, [playing, flashIndex, speed, tokens]);
 
   // Effect 2: listens for end of text
   useEffect(() => {
-    if (tokenCount > 0 && flashIndex >= tokenCount) {
+    if (tokens.length > 0 && flashIndex >= tokens.length) {
       setPlaying(false);
       setFlashIndex(0);
     }
-  }, [flashIndex, tokenCount, setPlaying]);
+  }, [flashIndex, tokens.length, setPlaying]);
 
   return flashIndex;
 }
