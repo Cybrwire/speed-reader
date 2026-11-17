@@ -17,13 +17,17 @@ type ReadingAreaProps = {
 
 export function ReadingArea({ playing, setPlaying, result, settings }:ReadingAreaProps) {
     
-    const cWord = useWordFlash(playing, settings.speed,result.tokens, setPlaying);
-    const containerStyle: Record<Mode, string> = {
+    const [showText, setShowText] = useState(false);
+    const currWord = useWordFlash(playing, settings.speed,result.tokens, setPlaying);
+
+    const readStyle: Record<Mode, string> = {
         paragraph: "",
         focused: "text-center",
     };
-    const [showText, setShowText] = useState(false);
-    const displayMode: Mode = showText ? "paragraph" : settings.mode;
+
+    const activeMode: Mode = showText ? "paragraph" : settings.mode;
+
+
     function toggleshowText(){
         setShowText(!showText);
     }
@@ -42,9 +46,9 @@ export function ReadingArea({ playing, setPlaying, result, settings }:ReadingAre
                         <Button disabled={showText} variant='play-pause' onClick={()=>toggleSpeedRead()} >{playing ? <PauseIcon/> : <PlayIcon/>}</Button>
                     </div>
                 </div>
-                <div className={`border ${containerStyle[displayMode]}`} style={{ fontSize: `${settings.fontSize}px` }}>
+                <div className={`border h-64 overflow-x-auto ${readStyle[activeMode]}`} style={{ fontSize: `${settings.fontSize}px`, writingMode: `${settings.orientation}` }}>
                         {result.tokens.map((token,i) => (
-                            <Word key={i} isCurrent={i === cWord} showText ={showText} word={token} mode={displayMode} showFurigana={settings.showFurigana} />
+                            <Word key={i} isCurrent={i === currWord} showText ={showText} word={token} mode={activeMode} showFurigana={settings.showFurigana} />
                         ))}
                 </div>
             </section>
