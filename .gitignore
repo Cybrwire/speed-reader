@@ -6,8 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# start up commands
-start-dev.sh
 
 # api-test file
 api-test.rest

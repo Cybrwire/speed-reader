@@ -4,6 +4,7 @@ export type Settings = {
     showFurigana: boolean;
     fontSize: number;
     tokenChunkSize: number;
+    orientation: "vertical-rl" | "horizontal-tb";
 }
 
 export type Mode = Settings["mode"];

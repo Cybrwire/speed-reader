@@ -17,7 +17,7 @@ export function SourceInput({ onSubmit, error }: SourceInputProps) {
         <div className="m-2">
             <form className='flex flex-col items-center' onSubmit={handleFormSubmit}>
                 <label htmlFor="textInput">Sentence to speed read:</label>
-                <input type="text" name="textInput" id="textInput" placeholder="Enter your text here..."
+                <textarea name="textInput" id="textInput" placeholder="Enter your text here..."
                 value={text} onChange={e => setText(e.target.value)}
                 className="w-fit p-2 m-2 border-2 field-sizing-content" />
                 <button type="submit" className="border-2 p-2 rounded-lg cursor-pointer" disabled={text.trim()===''}>Submit</button>
