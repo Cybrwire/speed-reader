@@ -21,6 +21,7 @@ export default function App() {
     fontSize: 24,
     tokenChunkSize: 1,
     speed: 500,
+    orientation: "horizontal-tb",
   })
 
   function updateSettings(changes:Partial<Settings>) {

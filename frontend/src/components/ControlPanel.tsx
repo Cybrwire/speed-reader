@@ -19,12 +19,12 @@ export function ControlPanel({settings, onSettingsChange}: ControlPanelProps) {
                     <input value={settings.speed} 
                     onChange={(e) => onSettingsChange({ speed: Number(e.target.value) })} className='border'type="number" id="speed" 
                     />
-                    <label htmlFor="showFurigana">Show Furigana:</label>
+                    {/* <label htmlFor="showFurigana">Show Furigana:</label>
                     <input checked={settings.showFurigana}
                     onChange={(e) => onSettingsChange({ showFurigana: e.target.checked })} type="checkbox" id="showFurigana" 
-                    />
+                    /> */}
                     <label htmlFor="fontSize" className="block">Font Size:</label>
-                    <input value={settings.fontSize} className="field-sizing-content min-w-[6ch]"
+                    <input value={settings.fontSize} className="field-sizing-content min-w-[6ch] border"
                     onChange={(e) => onSettingsChange({ fontSize: Number(e.target.value) })} type="number" id="fontSize" 
                     />
                     <fieldset className="border-0 p-0">
