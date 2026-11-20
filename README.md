@@ -6,18 +6,18 @@ A Japanese speed-reading web app. Paste in Japanese text, and the app breaks it 
 
 I've been studying Japanese for many years and I love reading books in Japanese but one of the biggest hurdles to reading in Japanese is reading speed. So I built this tool to train my recognition speed, and in turn, increasing my reading speed. I have many friends who enjoy reading in Japanese as well, so my goal for this project is to have several modes for fun speed reading activities based on real life scenarios, such as reading road signs, horizontal / vertical text, menu options, and many more. 
 
-![Speed Reading](./docs/speed-reader-hero.gif)
+![Speed Reading](./docs/speed-reader-hero.mp4)
 ## Features
 
 ### Paragraph mode
 The text is formatted like a normal paragraph.
 
-![Paragraph Mode](./docs/paragraph-mode.gif)
+![Paragraph Mode](./docs/paragraph-mode.mp4)
 
 ### Focused mode
 Words appear in a fixed spot, so your eyes don't move.
 
-![Focused Mode](./docs/focused-mode.gif)
+![Focused Mode](./docs/focused-mode.mp4)
 
 
 ## Project layout
