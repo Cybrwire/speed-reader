@@ -3,9 +3,6 @@
 A Japanese speed-reading web app. Paste in Japanese text, and the app breaks it into words using [ichiran](https://github.com/tshatrov/ichiran). Then you practice speed-reading as it shows you one word at a time. 
 
 
-Speed Reading
-
-
 https://github.com/user-attachments/assets/9418ecf8-9ab0-46ce-b811-0702b752be9d
 
 ## Story
@@ -18,17 +15,12 @@ I've been studying Japanese for many years and I love reading books in Japanese 
 ### Paragraph mode
 The text is formatted like a normal paragraph.
 
-Paragraph Mode
-
 
 https://github.com/user-attachments/assets/f418315a-ddba-4c17-a784-7678e94d630f
 
 
 ### Focused mode
 Words appear in a fixed spot, so your eyes don't move.
-
-
-Focused Mode
 
 
 https://github.com/user-attachments/assets/74ce8610-6785-41fe-8dcd-be7f93e4a4be
