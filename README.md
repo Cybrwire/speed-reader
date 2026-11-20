@@ -2,6 +2,10 @@
 
 A Japanese speed-reading web app. Paste in Japanese text, and the app breaks it into words using [ichiran](https://github.com/tshatrov/ichiran). Then you practice speed-reading as it shows you one word at a time. 
 
+## Story
+
+I've been studying Japanese for many years and I love reading books in Japanese but one of the biggest hurdles to reading in Japanese is reading speed. So I built this tool to train my recognition speed, and in turn, increasing my reading speed. I have many friends who enjoy reading in Japanese as well, so my goal for this project is to have several modes for fun speed reading activities based on real life scenarios, such as reading road signs, horizontal / vertical text, menu options, and many more. 
+
 ![Speed Reading](./docs/speed-reader-hero.gif)
 ## Features
 
@@ -97,9 +101,6 @@ DB_NAME=speedreader_database_name
 - [ ] Deploy with a managed Postgres provider
 - [ ] Docker Compose setup for the full app
 
-## Story
-
-I've been studying Japanese for many years and I love reading books in Japanese but one of the biggest hurdles to reading in Japanese is reading speed. So I built this tool to train my recognition speed, and in turn, increasing my reading speed. I have many friends who enjoy reading in Japanese as well, so my goal for this project is to have several modes for fun speed reading activities based on real life scenarios, such as reading road signs, horizontal / vertical text, menu options, and many more. 
 
 ## Credits
 
