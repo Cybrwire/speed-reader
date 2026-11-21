@@ -54,6 +54,7 @@ There are two independent Postgres instances: one holds user data, and the other
 
 
 ## How to run (locally)
+###### Not tested on Windows
 
 **Requirements:** Node.js 24, Docker Desktop, Git
 
