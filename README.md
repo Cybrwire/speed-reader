@@ -26,6 +26,15 @@ Words appear in a fixed spot, so your eyes don't move.
 https://github.com/user-attachments/assets/74ce8610-6785-41fe-8dcd-be7f93e4a4be
 
 
+## Roadmap
+
+- [ ] Better grouping for symbols and punctuation
+- [ ] Furigana for kanji 
+- [ ] More game modes (road signs, timed races, and more)
+- [ ] JWT auth middleware to protect routes
+- [ ] Deploy with a managed Postgres provider
+- [ ] Docker Compose setup for the full app
+
 ## Project layout
 
 ```
@@ -43,22 +52,9 @@ React client  -->  Express API  -->  ichiran-cli (Docker)
 
 There are two independent Postgres instances: one holds user data, and the other (inside the ichiran Docker stack) holds the JMdict dictionary data.
 
-## Tech stack
-
-- **Frontend:** React
-- **Backend:** Node.js, TypeScript, Express
-- **Database:** PostgreSQL 16 (Docker)
-- **Parsing:** ichiran (Docker, added as a git submodule)
-- **Auth:** bcrypt, JSON Web Tokens
-- **Dev tools:** tsx, nodemon, Docker Compose
-
-## Technical decisions
-
-- **`execFile` instead of `exec`.** User text is passed to a command-line tool. `execFile` does not run a shell, so text like `; rm -rf /` cannot be treated as a command.
-- **Handling ichiran's inconsistent output.** For conjugated or ambiguous words, ichiran returns `{ alternative: [...] }` instead of a plain word object. I handle this with a TypeScript union type and a type guard, so the compiler forces me to cover both cases.
-- **Separate databases.** User data and dictionary data live in different Postgres instances, so I can move user data to a managed provider later without touching ichiran.
 
 ## How to run (locally)
+###### Not tested on Windows
 
 **Requirements:** Node.js 24, Docker Desktop, Git
 
@@ -98,14 +94,21 @@ DB_USER=choose-a-username
 DB_PASSWORD=choose-a-password
 DB_NAME=speedreader_database_name
 ```
-## Roadmap
 
-- [ ] Better grouping for symbols and punctuation
-- [ ] Furigana for kanji 
-- [ ] More game modes (road signs, timed races, and more)
-- [ ] JWT auth middleware to protect routes
-- [ ] Deploy with a managed Postgres provider
-- [ ] Docker Compose setup for the full app
+## Tech stack
+
+- **Frontend:** React
+- **Backend:** Node.js, TypeScript, Express
+- **Database:** PostgreSQL 16 (Docker)
+- **Parsing:** ichiran (Docker, added as a git submodule)
+- **Auth:** bcrypt, JSON Web Tokens
+- **Dev tools:** tsx, nodemon, Docker Compose
+
+## Technical decisions
+
+- **`execFile` instead of `exec`.** User text is passed to a command-line tool. `execFile` does not run a shell, so text like `; rm -rf /` cannot be treated as a command.
+- **Handling ichiran's inconsistent output.** For conjugated or ambiguous words, ichiran returns `{ alternative: [...] }` instead of a plain word object. I handle this with a TypeScript union type and a type guard, so the compiler forces me to cover both cases.
+- **Separate databases.** User data and dictionary data live in different Postgres instances, so I can move user data to a managed provider later without touching ichiran.
 
 
 ## Credits
