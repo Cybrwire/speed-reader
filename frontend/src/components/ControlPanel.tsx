@@ -41,6 +41,8 @@ export function ControlPanel({settings, onSettingsChange}: ControlPanelProps) {
                         <input checked={settings.orientation === "vertical-rl"} onChange={() => onSettingsChange({ orientation: "vertical-rl" })} type="radio" name="textOrientation" id="orientVertical" />
                         <label htmlFor="orientVertical">Vertical</label>
                     </fieldset>
+                    <label htmlFor="tokenChunkSize" className="block">Token Chunk Size:</label>
+                    <input type="number" id="tokenChunkSize" className="field-sizing-content w-[2ch] border" onChange={(e) => onSettingsChange({ tokenChunkSize: Number(e.target.value) })} value={settings.tokenChunkSize}/>
                 </fieldset>
 
             </div>

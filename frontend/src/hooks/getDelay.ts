@@ -1,5 +1,5 @@
-const baseLength = 4;
-const extraDelay = 0.20;
+const baseLength = 3;
+const extraDelay = 0.30;
 
 export function getDelay(token:string, speed:number):number{
     

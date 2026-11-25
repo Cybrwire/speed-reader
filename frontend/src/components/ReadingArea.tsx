@@ -18,7 +18,8 @@ type ReadingAreaProps = {
 export function ReadingArea({ playing, setPlaying, result, settings }:ReadingAreaProps) {
     
     const [showText, setShowText] = useState(false);
-    const currWord = useWordFlash(playing, settings.speed,result.tokens, setPlaying);
+    const [stop, setStop] = useState(false);
+    const currWord = useWordFlash(playing, setPlaying, stop, setStop, settings.speed,result.tokens, settings.tokenChunkSize);
 
     const readStyle: Record<Mode, string> = {
         paragraph: "",
@@ -34,16 +35,17 @@ export function ReadingArea({ playing, setPlaying, result, settings }:ReadingAre
 
     function toggleSpeedRead(){
         setPlaying(!playing);
-        
     }
     console.log(result);
     return (
             <section className="flex flex-col border-2 p-2">
                 <div className="flex items-center justify-between"> 
-                    <h3 className="text-2xl">Reading Area</h3><span>{playing ? "Playing" : "Paused"}</span>
-                    <div>
+                    <h3 className="text-2xl">Reading Area</h3>
+                    <span>{playing ? "Playing" : "Paused"}</span>
+                    <div className="flex items-center">
                         <Button variant='show-hide' onClick={()=>toggleshowText()} >{showText ?  <OpenEye/> : <ClosedEye/>}</Button>
-                        <Button disabled={showText} variant='play-pause' onClick={()=>toggleSpeedRead()} >{playing ? <PauseIcon/> : <PlayIcon/>}</Button>
+                        <Button variant='play-pause' onClick={()=>toggleSpeedRead()} disabled={showText}>{playing ? <PauseIcon/> : <PlayIcon/>}</Button>
+                        <Button variant='stop' onClick={()=>setStop(true)}>◾️</Button >
                     </div>
                 </div>
                 <div className={`border h-64 overflow-x-auto ${readStyle[activeMode]}`} style={{ fontSize: `${settings.fontSize}px`, writingMode: `${settings.orientation}` }}>
